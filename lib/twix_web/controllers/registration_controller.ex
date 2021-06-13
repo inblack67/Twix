@@ -11,7 +11,7 @@ defmodule TwixWeb.RegistrationController do
     case UserRepo.register_user(registration_input) do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, "You have Signed Up")
+        |> put_flash(:info, "You have Signed Up, time to Sign In")
         |> redirect(to: Routes.auth_path(conn, :new))
 
       {:error, changeset} ->

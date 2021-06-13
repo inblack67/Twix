@@ -1,8 +1,8 @@
 <div>
   <p class="flow-text center blue-text">Sign In</p>
   <div>
-    <%= form_for @conn, Routes.auth_path(@conn, :create), [as: :session], fn f
-    -> %>
+    <%= form_for @conn, Routes.auth_path(@conn, :create), [as: :credentials],
+    fn f -> %>
     <div class="input-field">
       <%= label f, :username%> <%= text_input f, :username, required: true,
       autofocus: true, class: "validate" %> <%= error_tag f, :username %>

@@ -15,4 +15,8 @@ defmodule Twix.Repo.UserRepo do
     User.registration_changeset(%User{}, user_with_id)
     |> Repo.insert()
   end
+
+  def get_user_by_username(username) do
+    Repo.get_by(User, username: username)
+  end
 end
