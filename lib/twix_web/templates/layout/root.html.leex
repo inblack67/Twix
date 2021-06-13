@@ -26,6 +26,10 @@
               <li>
                 <%= link "Sign Up", class: "blue-text", to: Routes.registration_path(@conn, :new) %>
               </li>
+              <li>
+                <%= link "Sign Out", class: "red-text", to:
+                Routes.auth_path(@conn, :delete), method: :delete %>
+              </li>
             </ul>
           </div>
         </div>

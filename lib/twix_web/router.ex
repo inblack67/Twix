@@ -1,6 +1,8 @@
 defmodule TwixWeb.Router do
   use TwixWeb, :router
 
+  alias TwixWeb.Plugs.SetUser
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule TwixWeb.Router do
     plug :put_root_layout, {TwixWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug(SetUser)
   end
 
   pipeline :api do
@@ -19,6 +22,7 @@ defmodule TwixWeb.Router do
 
     get("/", HomeController, :index)
     resources("/auth", AuthController, only: [:new, :create])
+    delete("/sign_out", AuthController, :delete)
     resources("/registration", RegistrationController, only: [:new, :create])
 
     # live "/", PageLive, :index

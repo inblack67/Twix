@@ -19,4 +19,8 @@ defmodule Twix.Repo.UserRepo do
   def get_user_by_username(username) do
     Repo.get_by(User, username: username)
   end
+
+  def get_user_by_id!(id) do
+    Repo.get!(User, id)
+  end
 end

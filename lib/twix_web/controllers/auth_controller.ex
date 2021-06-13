@@ -21,4 +21,11 @@ defmodule TwixWeb.AuthController do
         |> render("new.html")
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> AuthRepo.sign_out()
+    |> put_flash(:info, "You have Signed Out")
+    |> redirect(to: Routes.auth_path(conn, :new))
+  end
 end
