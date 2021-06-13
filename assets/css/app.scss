@@ -1,8 +1,16 @@
 /* This file is for your main application css. */
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import url('./materialize.min.css');
+
+body,
+input,
+label,
+textarea,
+select,
+option {
+  background-color: black;
+  color: white;
+}
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
