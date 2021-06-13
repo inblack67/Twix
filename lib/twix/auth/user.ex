@@ -5,7 +5,7 @@ defmodule Twix.Auth.User do
   alias Twix.Auth.User
 
   schema "users" do
-    field(:_id, :string, default: UUID.uuid4())
+    field(:_id, :string)
     field(:email, :string)
     field(:password_hash, :string)
     field(:username, :string)
@@ -19,22 +19,30 @@ defmodule Twix.Auth.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:username, :email])
-    |> validate_required([:username, :email, :password])
+    |> cast(attrs, [:username, :email, :_id])
+    |> validate_required([:username, :email])
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
-    |> validate_confirmation(:password)
     |> validate_length(:username, min: 2, max: 30)
-    |> validate_length(:password, min: 8, max: 100)
     |> unique_constraint(:username)
     |> unique_constraint(:email)
+  end
+
+  def registration_changeset(%User{} = user, attrs) do
+    user
+    |> changeset(attrs)
+    |> cast(attrs, [:password], [])
+    |> validate_confirmation(:password)
+    |> validate_length(:password, min: 8, max: 100)
     |> encrypt_password()
   end
 
   defp encrypt_password(changeset) do
+    IO.inspect(changeset)
+
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
-        put_change(changeset, :password, Argon2.hash_pwd_salt(password))
+        put_change(changeset, :password_hash, Argon2.hash_pwd_salt(password))
 
       _ ->
         changeset

@@ -4,12 +4,15 @@
 
 body,
 input,
-label,
 textarea,
 select,
 option {
   background-color: black;
   color: white;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 /* LiveView specific classes for your customizations */

@@ -17,7 +17,11 @@ defmodule TwixWeb.Router do
   scope "/", TwixWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    get("/", HomeController, :index)
+    resources("/auth", AuthController, only: [:new, :create])
+    resources("/registration", RegistrationController, only: [:new, :create])
+
+    # live "/", PageLive, :index
   end
 
   # Other scopes may use custom stacks.

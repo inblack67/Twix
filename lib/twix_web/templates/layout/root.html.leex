@@ -18,7 +18,15 @@
         <nav role="navigation" class="black">
         <div class="nav-wrapper">
           <div class="container"> 
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/inblack67/Twix" class="brand-logo">Twix</a>
+            <%= link "Twix", class: "brand-logo blue-text", to: Routes.home_path(@conn, :index) %>
+            <ul class="right">
+            <li>
+              <%= link "Sign In", class: "blue-text", to: Routes.auth_path(@conn, :new) %>
+            </li>
+              <li>
+                <%= link "Sign Up", class: "blue-text", to: Routes.registration_path(@conn, :new) %>
+              </li>
+            </ul>
           </div>
         </div>
         </nav>
