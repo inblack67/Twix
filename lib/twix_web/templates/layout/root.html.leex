@@ -11,6 +11,10 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script>
+      M.AutoInit();
+    </script>
+
   </head>
   <body>
     <header>
@@ -22,13 +26,16 @@
             <ul class="right">
               <%= if @user_signed_in? do %>
               <li>
-                <%= link "Sign Out", class: "grey darken-2 btn", to:
-                Routes.auth_path(@conn, :delete), method: :delete %>
-              </li>
-              <li>
                 <%= link "Feed", class: "grey darken-2 btn", to:
                 Routes.feed_path(@conn, :index) %>
               </li>
+              <li>
+                <%= link "Sign Out", class: "grey darken-2 btn", to:
+                Routes.auth_path(@conn, :delete), method: :delete %>
+              </li>
+              <div class="fixed-action-btn modal-trigger" data-target="add-post">
+                <span class="btn-floating waves-effect btn-large waves-light grey darken-2"><i class="material-icons">add</i></span>
+              </div>
               <% else %>
               <li>
                 <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>

@@ -1,0 +1,36 @@
+<div class="container">
+  <p class="flow-text grey-text darken-2 center">Elixir Feed</p>
+
+  <div id="add-post" class="modal mybg grey-text darken-2">
+    <div class="modal-content">
+      <h4>Add Post</h4>
+      <p>What's your poison?</p>
+
+      <div>
+        <div class="input-field">
+          <input type="text" id="title"></input>
+          <label for="title">Title</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea"></textarea>
+          <label for="content">Content</label>
+        </div>
+        <div class="input-field">
+          <button type="submit" class="btn grey darken-2">Post</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer grey darken-2">
+      <button class="modal-close waves-effect waves-red btn-flat grey darken-2 white-text">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const elems = document.querySelectorAll('.modal');
+    const instances = M.Modal.init(elems);
+  });
+</script>

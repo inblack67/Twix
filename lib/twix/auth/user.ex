@@ -3,6 +3,7 @@ defmodule Twix.Auth.User do
   import Ecto.Changeset
 
   alias Twix.Auth.User
+  alias Twix.Feed.Post
 
   schema "users" do
     field(:_id, :string)
@@ -12,6 +13,8 @@ defmodule Twix.Auth.User do
 
     field(:password, :string, virtual: true)
     field(:password_confirmation, :string, virtual: true)
+
+    has_many(:posts, Post)
 
     timestamps()
   end

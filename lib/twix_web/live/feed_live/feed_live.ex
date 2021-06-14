@@ -7,7 +7,7 @@ defmodule TwixWeb.FeedLive do
   end
 
   @impl true
-  def mount(_params, _session, _socket) do
-    {:error, :unauthorized}
+  def mount(_params, _session, socket) do
+    {:error, socket}
   end
 end
