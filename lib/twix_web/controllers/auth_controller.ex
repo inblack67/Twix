@@ -2,6 +2,7 @@ defmodule TwixWeb.AuthController do
   use TwixWeb, :controller
 
   alias Twix.Repo.AuthRepo
+  plug :protect_me when action in [:new, :create]
 
   def new(conn, _params) do
     render(conn, "new.html")
@@ -27,5 +28,16 @@ defmodule TwixWeb.AuthController do
     |> AuthRepo.sign_out()
     |> put_flash(:info, "You have Signed Out")
     |> redirect(to: Routes.auth_path(conn, :new))
+  end
+
+  defp protect_me(conn, _params) do
+    if !conn.assigns.user_signed_in? do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You have already Signed In")
+      |> redirect(to: Routes.home_path(conn, :index))
+      |> halt()
+    end
   end
 end

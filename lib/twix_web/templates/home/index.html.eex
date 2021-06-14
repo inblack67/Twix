@@ -8,13 +8,7 @@
             Damn powerful. Channels, Presence, Ecto, Genservers, LiveView etc.
           </p>
         </div>
-        <div class="card-action">
-          <%= link "Sign In", class: "btn red", to: Routes.auth_path(@conn,
-          :new) %> <%= link "Sign Up", class: "btn red", to:
-          Routes.registration_path(@conn, :new) %>
-          <%= link "Sign Out", class: "btn red", to:
-          Routes.auth_path(@conn, :delete), method: :delete %>
-        </div>
+        <div class="card-action"></div>
       </div>
     </div>
   </div>

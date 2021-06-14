@@ -3,6 +3,8 @@ defmodule TwixWeb.RegistrationController do
 
   alias Twix.Repo.UserRepo
 
+  plug :protect_me
+
   def new(conn, _params) do
     render(conn, "new.html", changeset: conn)
   end
@@ -16,6 +18,17 @@ defmodule TwixWeb.RegistrationController do
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  defp protect_me(conn, _params) do
+    if !conn.assigns.user_signed_in? do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You have already Signed In")
+      |> redirect(to: Routes.home_path(conn, :index))
+      |> halt()
     end
   end
 end
