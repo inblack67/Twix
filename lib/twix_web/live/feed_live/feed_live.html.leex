@@ -1,29 +1,27 @@
 <div class="container">
   <p class="flow-text grey-text darken-2 center">Elixir Feed</p>
 
-  <div id="add-post" class="modal mybg grey-text darken-2">
+  <div id="add-post-modal" class="modal mybg">
     <div class="modal-content">
-      <h4>Add Post</h4>
-      <p>What's your poison?</p>
-
       <div>
+        <p class="flow-text center grey-text darken-2">What's your poison?</p>
+        <%= f = form_for @changeset, "#", [phx_submit: :save] %>
         <div class="input-field">
-          <input type="text" id="title"></input>
-          <label for="title">Title</label>
+          <%= label f, :title %> <%= text_input f, :title, required: true,
+          autofocus: true, minlength: 5, maxlength: 30 %> <%= error_tag f,
+          :title %>
         </div>
         <div class="input-field">
-          <textarea id="content" class="materialize-textarea"></textarea>
-          <label for="content">Content</label>
+          <%= label f, :content %> <%= textarea f, :content, class:
+          "materialize-textarea", required: true, minlength: 10, maxlength: 300
+          %> <%= error_tag f, :content %>
         </div>
-        <div class="input-field">
-          <button type="submit" class="btn grey darken-2">Post</button>
-        </div>
+        <%= submit "Post", phx_disable_with: "Posting...", class: "btn grey
+        darken-2" %>
       </div>
     </div>
-    <div class="modal-footer grey darken-2">
-      <button class="modal-close waves-effect waves-red btn-flat grey darken-2 white-text">
-        Cancel
-      </button>
+    <div class="modal-footer grey darken-4">
+      <button class="btn modal-close grey white-text darken-2">Cancel</button>
     </div>
   </div>
 </div>

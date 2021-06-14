@@ -10,8 +10,6 @@ defmodule Twix.Repo.UserRepo do
         UUID.uuid4()
       )
 
-    IO.inspect(user_with_id)
-
     User.registration_changeset(%User{}, user_with_id)
     |> Repo.insert()
   end

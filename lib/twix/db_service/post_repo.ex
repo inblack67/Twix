@@ -7,8 +7,11 @@ defmodule Twix.Repo.PostRepo do
   end
 
   def create_post(input) do
-    input
-    |> Post.changeset(%Post{})
-    |> IO.inspect()
+    Post.changeset(%Post{}, input)
+    |> Repo.insert()
+  end
+
+  def validate_post(post, attrs \\ %{}) do
+    Post.changeset(post, attrs)
   end
 end
