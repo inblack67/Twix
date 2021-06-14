@@ -25,7 +25,11 @@
                 <%= link "Sign Out", class: "grey darken-2 btn", to:
                 Routes.auth_path(@conn, :delete), method: :delete %>
               </li>
-              <%= else %>
+              <li>
+                <%= link "Feed", class: "grey darken-2 btn", to:
+                Routes.feed_path(@conn, :index) %>
+              </li>
+              <% else %>
               <li>
                 <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>
               </li>
