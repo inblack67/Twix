@@ -1,5 +1,5 @@
 <div>
-  <p class="flow-text center blue-text">Sign In</p>
+  <p class="flow-text center grey-text">Sign In</p>
   <div>
     <%= form_for @conn, Routes.auth_path(@conn, :create), [as: :credentials], fn
     f -> %>
@@ -11,7 +11,7 @@
       <%= label f, :password %> <%= password_input f, :password, required:
       true,autofocus: true, class: "validate" %> <%= error_tag f, :password %>
     </div>
-    <div class="input-field"><%= submit "Sign In", class: "btn blue" %></div>
+    <div class="input-field"><%= submit "Sign In", class: "btn grey darken-2" %></div>
     <% end %>
   </div>
 </div>

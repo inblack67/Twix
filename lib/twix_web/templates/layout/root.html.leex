@@ -15,22 +15,22 @@
   <body>
     <header>
       <section>
-        <nav role="navigation" class="black">
+        <nav role="navigation">
         <div class="nav-wrapper">
           <div class="container"> 
-            <%= link "Twix", class: "brand-logo blue-text", to: Routes.home_path(@conn, :index) %>
+            <%= link "Twix", class: "brand-logo grey-text", to: Routes.home_path(@conn, :index) %>
             <ul class="right">
               <%= if @user_signed_in? do %>
               <li>
-                <%= link "Sign Out", class: "red-text", to:
+                <%= link "Sign Out", class: "grey darken-2 btn", to:
                 Routes.auth_path(@conn, :delete), method: :delete %>
               </li>
               <%= else %>
               <li>
-                <%= link "Sign In", class: "blue-text", to: Routes.auth_path(@conn, :new) %>
+                <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>
               </li>
               <li>
-                <%= link "Sign Up", class: "blue-text", to: Routes.registration_path(@conn, :new) %>
+                <%= link "Sign Up", class: "btn grey darken-2", to: Routes.registration_path(@conn, :new) %>
               </li>
               <% end %>
             </ul>

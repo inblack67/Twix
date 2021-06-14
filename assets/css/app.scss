@@ -7,21 +7,32 @@ input,
 textarea,
 select,
 option {
-  background-color: black;
+  --tw-bg-opacity: 1;
+  background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
   color: white;
+}
+
+nav {
+  --tw-bg-opacity: 1;
+  background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
+}
+
+.my_card {
+  --tw-bg-opacity: 1;
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px black inset !important;
-  box-shadow: 0 0 0 30px black inset !important;
+  --tw-bg-opacity: 1;
+  -webkit-box-shadow: 0 0 0 30px rgba(17, 24, 39, var(--tw-bg-opacity)) inset !important;
+  box-shadow: 0 0 0 30px rgba(17, 24, 39, var(--tw-bg-opacity)) inset !important;
 }
 
-input:-webkit-autofill
-{
- -webkit-text-fill-color: white !important;
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
 }
 
 .uppercase {
@@ -89,19 +100,13 @@ input:-webkit-autofill
   border-radius: 4px;
 }
 .alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #4b5563;
 }
 .alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  background-color: #fbbf24;
 }
 .alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+  background-color: #ef4444;
 }
 .alert p {
   margin-bottom: 0;
