@@ -15,7 +15,7 @@ defmodule Twix.Feed.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :likes, :image_urls])
+    |> cast(attrs, [:title, :content, :likes, :image_urls, :user_id])
     |> validate_required([:title, :content])
     |> validate_length(:title, min: 5, max: 30)
     |> validate_length(:content, min: 10, max: 300)

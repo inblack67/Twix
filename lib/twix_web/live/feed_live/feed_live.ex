@@ -16,7 +16,7 @@ defmodule TwixWeb.FeedLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:error, socket}
+    {:noreply, socket}
   end
 
   # @impl true
@@ -39,8 +39,8 @@ defmodule TwixWeb.FeedLive do
       |> Map.put("user_id", socket.assigns.current_user_id)
 
     case PostRepo.create_post(ready_post) do
-      {:ok, _post} -> put_flash(socket, :info, "Post created")
-      {:error, changeset} -> assign(socket, changeset: changeset)
+      {:ok, _post} -> {:noreply, put_flash(socket, :info, "Post created")}
+      {:error, changeset} -> {:noreply, assign(socket, changeset: changeset)}
     end
 
     {:noreply, socket}
