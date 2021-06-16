@@ -7,7 +7,7 @@ defmodule TwixWeb.FeedLive do
   @new_post "new_post"
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, %{"current_user_id" => _current_user_id}, socket) do
     if connected?(socket), do: TwixWeb.Endpoint.subscribe(@feed_topic)
 
     posts = PostRepo.get_posts()

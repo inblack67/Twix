@@ -19,11 +19,6 @@ defmodule TwixWeb.FeedLive.Create do
   end
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:noreply, socket}
-  end
-
-  @impl true
   def handle_event("validate", %{"post" => post_input}, socket) do
     changeset =
       socket.assigns.post
