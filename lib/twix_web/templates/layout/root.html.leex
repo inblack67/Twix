@@ -33,6 +33,12 @@
                 <%= link "Sign Out", class: "grey darken-2 btn", to:
                 Routes.auth_path(@conn, :delete), method: :delete %>
               </li>
+              <div class="fixed-action-btn">
+              <%= if @conn.request_path === Routes.feed_path(@conn, :index) do %>
+                <%= link "Create Post", to:
+                Routes.feed_create_path(@conn, :create), class: "btn grey darken-2" %>
+              <% end %>
+              </div>
               <% else %>
               <li>
                 <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>

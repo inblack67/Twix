@@ -26,8 +26,7 @@ defmodule TwixWeb.Router do
     resources("/registration", RegistrationController, only: [:new, :create])
 
     live "/feed", FeedLive, :index
-
-    # live "/", PageLive, :index
+    live "/feed/create", FeedLive.Create, :create
   end
 
   # Other scopes may use custom stacks.
