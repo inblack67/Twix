@@ -19,5 +19,6 @@ defmodule Twix.Feed.Post do
     |> validate_required([:title, :content])
     |> validate_length(:title, min: 5, max: 30)
     |> validate_length(:content, min: 10, max: 300)
+    |> unique_constraint(:title)
   end
 end

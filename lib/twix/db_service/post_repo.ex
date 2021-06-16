@@ -14,4 +14,8 @@ defmodule Twix.Repo.PostRepo do
   def validate_post(post, attrs \\ %{}) do
     Post.changeset(post, attrs)
   end
+
+  def post_changeset(%Post{} = post, attrs \\ %{}) do
+    Post.changeset(post, attrs)
+  end
 end
