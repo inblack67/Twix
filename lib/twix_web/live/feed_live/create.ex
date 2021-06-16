@@ -4,6 +4,9 @@ defmodule TwixWeb.FeedLive.Create do
   alias Twix.Feed.Post
   alias Twix.Repo.PostRepo
 
+  @feed_topic "feed_topic"
+  @new_post "new_post"
+
   @impl true
   def mount(_params, %{"current_user_id" => current_user_id}, socket) do
     changeset = Post.changeset(%Post{}, %{})
@@ -36,7 +39,7 @@ defmodule TwixWeb.FeedLive.Create do
 
     case PostRepo.create_post(post_with_user) do
       {:ok, post} ->
-        TwixWeb.Endpoint.broadcast("ptopic", "new_post", post)
+        TwixWeb.Endpoint.broadcast(@feed_topic, @new_post, post)
 
         {:noreply,
          socket
