@@ -9,7 +9,9 @@ defmodule Twix.Repo.PostRepo do
   end
 
   def create_post(input) do
-    Post.changeset(%Post{}, input)
+    input_with_uuid = Map.put(input, "_id", UUID.uuid4())
+
+    Post.changeset(%Post{}, input_with_uuid)
     |> Repo.insert()
   end
 end

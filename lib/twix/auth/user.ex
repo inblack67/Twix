@@ -41,8 +41,6 @@ defmodule Twix.Auth.User do
   end
 
   defp encrypt_password(changeset) do
-    IO.inspect(changeset)
-
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
         put_change(changeset, :password_hash, Argon2.hash_pwd_salt(password))

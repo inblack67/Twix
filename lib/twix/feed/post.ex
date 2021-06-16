@@ -8,6 +8,7 @@ defmodule Twix.Feed.Post do
     field :likes, :integer, default: 0
     field :image_urls, {:array, :string}, default: []
     field :user_id, :id
+    field :_id, :string
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Twix.Feed.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :likes, :image_urls, :user_id])
+    |> cast(attrs, [:title, :content, :likes, :image_urls, :user_id, :_id])
     |> validate_required([:title, :content])
     |> validate_length(:title, min: 5, max: 30)
     |> validate_length(:content, min: 10, max: 300)
