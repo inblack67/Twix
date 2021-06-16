@@ -15,7 +15,6 @@
 - Authentication (Session)
 - Realtime Features:-
   - CRUD
-  - Photo Upload
   - Chat
 
 To start the Phoenix server:
