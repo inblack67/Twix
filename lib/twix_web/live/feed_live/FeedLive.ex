@@ -2,6 +2,7 @@ defmodule TwixWeb.FeedLive do
   use TwixWeb, :live_view
 
   alias Twix.Feed.Post
+  alias Twix.Repo.PostRepo
 
   @impl true
   def mount(_params, %{"current_user_id" => current_user_id}, socket) do
@@ -24,46 +25,22 @@ defmodule TwixWeb.FeedLive do
     changeset =
       socket.assigns.post
       |> Post.changeset(post_input)
-      |> Map.put(:action, :validate)
+
+    # |> Map.put(:action, :validate)
 
     {:noreply, assign(socket, :changeset, changeset)}
   end
 
   @impl true
   def handle_event("save", %{"post" => post_input}, socket) do
-    IO.inspect(socket)
+    post_with_user = Map.put(post_input, "user_id", socket.assigns.current_user_id)
 
-    Post.changeset(socket.assigns.post, post_input)
-    |> IO.inspect()
+    case PostRepo.create_post(post_with_user) do
+      {:ok, _user} ->
+        {:noreply, socket |> put_flash(:info, "Post created successfully")}
 
-    {:noreply, socket}
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign(socket, changeset: changeset)}
+    end
   end
 end
-
-# @impl true
-# def handle_event("validate", %{"post" => post_params}, socket) do
-#   changeset =
-#     socket.assigns.post
-#     |> PostRepo.post_changeset(post_params)
-#     |> Map.put(:action, :validate)
-
-#   {:noreply, assign(socket, :changeset, changeset)}
-# end
-
-# @impl true
-# def handle_event("save", %{"post" => post_params}, socket) do
-#   ready_post =
-#     post_params
-#     |> Map.put("user_id", socket.assigns.current_user_id)
-
-#   case PostRepo.create_post(ready_post) do
-#     {:ok, _post} ->
-#       {:noreply,
-#        socket
-#        |> put_flash(:info, "Post created successfully")
-#        |> push_redirect(to: socket.assigns.return_to)}
-
-#     {:error, %Ecto.Changeset{} = changeset} ->
-#       {:noreply, assign(socket, changeset: changeset)}
-#   end
-# end

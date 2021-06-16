@@ -33,9 +33,6 @@
                 <%= link "Sign Out", class: "grey darken-2 btn", to:
                 Routes.auth_path(@conn, :delete), method: :delete %>
               </li>
-              <div class="fixed-action-btn modal-trigger" data-target="add-post-modal">
-                <span class="btn-floating waves-effect btn-large waves-light grey darken-2"><i class="material-icons">add</i></span>
-              </div>
               <% else %>
               <li>
                 <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>

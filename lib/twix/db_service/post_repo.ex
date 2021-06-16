@@ -10,12 +10,4 @@ defmodule Twix.Repo.PostRepo do
     Post.changeset(%Post{}, input)
     |> Repo.insert()
   end
-
-  def validate_post(post, attrs \\ %{}) do
-    Post.changeset(post, attrs)
-  end
-
-  def post_changeset(%Post{} = post, attrs \\ %{}) do
-    Post.changeset(post, attrs)
-  end
 end
