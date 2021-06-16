@@ -35,7 +35,9 @@ defmodule TwixWeb.FeedLive.Create do
     post_with_user = Map.put(post_input, "user_id", socket.assigns.current_user_id)
 
     case PostRepo.create_post(post_with_user) do
-      {:ok, _post} ->
+      {:ok, post} ->
+        TwixWeb.Endpoint.broadcast("ptopic", "new_post", post)
+
         {:noreply,
          socket
          |> put_flash(:info, "Post created successfully")
