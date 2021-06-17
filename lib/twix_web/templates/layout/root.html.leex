@@ -19,6 +19,12 @@
   <body>
     <header>
       <section>
+        <div class="fixed-action-btn">
+              <%= if @conn.request_path === Routes.feed_path(@conn, :index) do %>
+                <%= link "Create Post", to:
+                Routes.feed_create_path(@conn, :create), class: "btn grey darken-2" %>
+              <% end %>
+        </div>
         <nav role="navigation">
         <div class="nav-wrapper">
           <div class="container"> 
@@ -26,33 +32,62 @@
             <ul class="right">
               <%= if @user_signed_in? do %>
               <li>
-                <%= link "Feed", class: "grey darken-2 btn", to:
+                <%= link "Feed", class: "grey darken-2 btn hide-on-small-only", to:
                 Routes.feed_path(@conn, :index) %>
               </li>
               <li>
-                <%= link "Sign Out", class: "grey darken-2 btn", to:
+                <%= link "Sign Out", class: "grey darken-2 btn hide-on-small-only", to:
                 Routes.auth_path(@conn, :delete), method: :delete %>
               </li>
-              <div class="fixed-action-btn">
-              <%= if @conn.request_path === Routes.feed_path(@conn, :index) do %>
-                <%= link "Create Post", to:
-                Routes.feed_create_path(@conn, :create), class: "btn grey darken-2" %>
-              <% end %>
-              </div>
               <% else %>
               <li>
-                <%= link "Sign In", class: "btn grey darken-2", to: Routes.auth_path(@conn, :new) %>
+                <%= link "Sign In", class: "btn grey darken-2 hide-on-small-only", to: Routes.auth_path(@conn, :new) %>
               </li>
               <li>
-                <%= link "Sign Up", class: "btn grey darken-2", to: Routes.registration_path(@conn, :new) %>
+                <%= link "Sign Up", class: "btn grey darken-2 hide-on-small-only", to: Routes.registration_path(@conn, :new) %>
               </li>
               <% end %>
             </ul>
           </div>
         </div>
         </nav>
+        <ul id="slide-out" class="sidenav blue-grey darken-4 white-text">
+     <li>
+      <a href="/" class="white-text">
+      <i class="material-icons white-text">chat</i>
+      Twix
+      </a>
+     </li>
+    <%= if @user_signed_in? do %>
+    <li>
+      <%= link "Feed", class: "waves-effect white-text waves-white", to:
+      Routes.feed_path(@conn, :index) %>
+    </li>
+    <li>
+      <%= link "Sign Out", class: "waves-effect white-text waves-white", to:
+      Routes.auth_path(@conn, :delete), method: :delete %>
+    </li>
+    <% else %>
+    <li>
+      <%= link "Sign In", class: "waves-effect white-text waves-white", to: Routes.auth_path(@conn, :new) %>
+    </li>
+    <li>
+      <%= link "Sign Up", class: "waves-effect white-text waves-white", to: Routes.registration_path(@conn, :new) %>
+    </li>
+    <% end %>
+  </ul>
       </section>
+      <div class="container">
+        <div data-target="slide-out" class="sidenav-trigger left pointer"><i class="material-icons blue-grey-text darken-4">menu</i></div>
+      </div>
     </header>
     <%= @inner_content %>
   </body>
 </html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const elems = document.querySelectorAll('.sidenav');
+    const instances = M.Sidenav.init(elems);
+  });
+</script>
