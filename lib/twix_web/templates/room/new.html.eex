@@ -1,1 +1,19 @@
-<h1>create room</h1>
+<div>
+  <p class="flow-text center grey-text">Create Room</p>
+  <div>
+    <%= form_for @changeset, Routes.room_path(@conn, :create), [as: :room],
+    fn f -> %>
+    <div class="input-field">
+      <%= label f, :name%> <%= text_input f, :name, required: true,
+      autofocus: true, minlength: 5, maxLength: 30, class: "validate" %> <%= error_tag f, :name %>
+    </div>
+    <div class="input-field">
+      <%= label f, :description%> <%= text_input f, :description, required: true,
+      autofocus: true, minlength: 10, maxLength: 300, class: "validate" %> <%= error_tag f, :description %>
+    </div>
+    <div class="input-field">
+      <%= submit "Create", class: "btn grey darken-2" %>
+    </>
+    <% end %>
+  </div>
+</div>

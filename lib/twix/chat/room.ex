@@ -16,7 +16,7 @@ defmodule Twix.Chat.Room do
   @doc false
   def changeset(room, attrs) do
     room
-    |> cast(attrs, [:name, :description])
+    |> cast(attrs, [:name, :description, :user_id])
     |> validate_required([:name, :description])
     |> validate_length(:name, min: 5, max: 30)
     |> validate_length(:description, min: 10, max: 300)

@@ -64,6 +64,14 @@
       Routes.feed_path(@conn, :index) %>
     </li>
     <li>
+      <%= link "Rooms", class: "waves-effect white-text waves-white", to:
+      Routes.room_path(@conn, :index) %>
+    </li>
+    <li>
+      <%= link "Create Room", class: "waves-effect white-text waves-white", to:
+      Routes.room_path(@conn, :new) %>
+    </li>
+    <li>
       <%= link "Sign Out", class: "waves-effect white-text waves-white", to:
       Routes.auth_path(@conn, :delete), method: :delete %>
     </li>

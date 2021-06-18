@@ -5,7 +5,7 @@ defmodule Twix.Repo.Migrations.CreateRooms do
     create table(:rooms) do
       add :name, :string, null: false
       add :description, :string, null: false
-      add :user_id, references(:users, on_delete: :delete_all)
+      add :user_id, references(:users, on_delete: :delete_all), null: false
 
       timestamps()
     end
