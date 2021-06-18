@@ -25,6 +25,8 @@ defmodule TwixWeb.Router do
     delete("/sign_out", AuthController, :delete)
     resources("/registration", RegistrationController, only: [:new, :create])
 
+    resources("/chat/rooms", RoomController, only: [:index, :new, :create])
+
     live "/feed", FeedLive, :index
     live "/feed/create", FeedLive.Create, :create
   end
