@@ -20,7 +20,7 @@ defmodule TwixWeb.RoomController do
       {:ok, _room} ->
         conn
         |> put_flash(:info, "Room created")
-        |> redirect(to: Routes.room_path(conn, :index))
+        |> redirect(to: Routes.chat_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

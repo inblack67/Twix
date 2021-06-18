@@ -25,10 +25,13 @@ defmodule TwixWeb.Router do
     delete("/sign_out", AuthController, :delete)
     resources("/registration", RegistrationController, only: [:new, :create])
 
-    resources("/chat/rooms", RoomController, only: [:index, :new, :create])
+    resources("/chat/rooms", RoomController, only: [:new, :create])
 
     live "/feed", FeedLive, :index
     live "/feed/create", FeedLive.Create, :create
+
+    live "/chat/rooms", ChatLive, :index
+    live "/chat/room/:id", ChatLive.Room, :index
   end
 
   # Other scopes may use custom stacks.

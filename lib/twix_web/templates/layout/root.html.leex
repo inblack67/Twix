@@ -27,7 +27,7 @@
         </div>
         <nav role="navigation">
         <div class="nav-wrapper">
-          <div class="container"> 
+          <div class="container">
             <%= link "Twix", class: "brand-logo grey-text", to: Routes.home_path(@conn, :index) %>
             <ul class="right">
               <%= if @user_signed_in? do %>
@@ -65,7 +65,7 @@
     </li>
     <li>
       <%= link "Rooms", class: "waves-effect white-text waves-white", to:
-      Routes.room_path(@conn, :index) %>
+      Routes.chat_path(@conn, :index) %>
     </li>
     <li>
       <%= link "Create Room", class: "waves-effect white-text waves-white", to:
