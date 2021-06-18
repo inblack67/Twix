@@ -1,4 +1,4 @@
-defmodule Twix.Repo.Migrations.CreateRooms do
+defmodule Twix.Repo.Migrations.CreateRooms2 do
   use Ecto.Migration
 
   def change do
