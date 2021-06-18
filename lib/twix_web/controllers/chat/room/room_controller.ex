@@ -5,6 +5,9 @@ defmodule TwixWeb.RoomController do
 
   plug :protect_me
 
+  @chat_topic "chat_topic"
+  @new_room "new_room"
+
   def index(conn, _params) do
     render(conn, "index.html")
   end
@@ -17,7 +20,9 @@ defmodule TwixWeb.RoomController do
     room_with_user_id = Map.put(room_input, "user_id", conn.assigns.current_user.id)
 
     case RoomRepo.create_room(room_with_user_id) do
-      {:ok, _room} ->
+      {:ok, room} ->
+        TwixWeb.Endpoint.broadcast(@chat_topic, @new_room, room)
+
         conn
         |> put_flash(:info, "Room created")
         |> redirect(to: Routes.chat_path(conn, :index))
