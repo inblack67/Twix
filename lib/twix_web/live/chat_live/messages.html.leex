@@ -17,7 +17,7 @@
   </div>
 
 <div class="chatbox">
-  <ul id="messages" class="chat-messages">
+  <ul id="messages" class="chat-messages" phx-update="prepend">
     <%= for message <- @messages do %>
       <li class="darken-4 chat-message" id="<%= message.id %>">
         <p class="message-content">

@@ -28,7 +28,11 @@ defmodule Twix.Repo.MessageRepo do
       user
       |> Ecto.build_assoc(:messages, message_with_room)
 
-    Message.changeset(message_with_room_and_user, %{})
-    |> Repo.insert()
+    {:ok, message} =
+      Message.changeset(message_with_room_and_user, %{})
+      |> Repo.insert()
+
+    message_with_user = Repo.preload(message, :user)
+    {:ok, message_with_user}
   end
 end

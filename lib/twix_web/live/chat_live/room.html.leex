@@ -3,6 +3,6 @@
     Welcome to <%= @current_room.name %>
   </p>
   <div>
-    <%= live_component @socket, TwixWeb.ChatLive.Messages, id: @current_room._id, room: @current_room, current_user_id: @current_user_id %>
+    <%= live_component @socket, TwixWeb.ChatLive.Messages, id: @current_room._id, room: @current_room, current_user_id: @current_user_id, messages: @messages %>
   </div>
 </div>

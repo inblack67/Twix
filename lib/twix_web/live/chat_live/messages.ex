@@ -14,16 +14,18 @@ defmodule TwixWeb.ChatLive.Messages do
 
   @impl true
   def update(assigns, socket) do
+    if connected?(socket), do: TwixWeb.Endpoint.subscribe(@room_topic)
+
     changeset = Message.changeset(%Message{}, %{})
-    messages = MessageRepo.get_messages(assigns.room)
+    # messages = MessageRepo.get_messages(assigns.room)
 
     {:ok,
      assign(socket,
        current_user_id: assigns.current_user_id,
        room: assigns.room,
        changeset: changeset,
-       messages: messages,
-       temporary_assigns: [messages]
+       messages: assigns.messages,
+       temporary_assigns: [assigns.messages]
      )}
   end
 
