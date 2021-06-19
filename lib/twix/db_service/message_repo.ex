@@ -7,4 +7,12 @@ defmodule Twix.Repo.MessageRepo do
   def get_messages(limit \\ 20) do
     Repo.all(from(m in Message, limit: ^limit))
   end
+
+  def create_message(message, room_id, user_id) do
+    IO.inspect(message)
+    IO.inspect(room_id)
+    IO.inspect(user_id)
+    
+    {:ok, %Message{}}
+  end
 end
