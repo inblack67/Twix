@@ -1,4 +1,4 @@
-defmodule Twix.Chat.Messages do
+defmodule Twix.Chat.Message do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -16,8 +16,8 @@ defmodule Twix.Chat.Messages do
   end
 
   @doc false
-  def changeset(messages, attrs) do
-    messages
+  def changeset(message, attrs) do
+    message
     |> cast(attrs, [:content, :type])
     |> validate_required([:content])
   end
