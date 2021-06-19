@@ -12,7 +12,11 @@ defmodule Twix.Repo.RoomRepo do
   end
 
   def get_rooms() do
-    Repo.all(from(p in Room, order_by: [desc: p.inserted_at]))
+    Repo.all(from(r in Room, order_by: [desc: r.inserted_at]))
+  end
+
+  def get_room_by_name(name) do
+    Repo.get_by!(Room, name: name)
   end
 
   def room_changeset() do

@@ -1,5 +1,8 @@
 <div class='mt-2'>
   <p class="flow-text grey-text darken-4 center">
-    Welcome to <%= @current_room %>
+    Welcome to <%= @current_room.name %>
   </p>
+  <div>
+    <%= live_component TwixWeb.ChatLive.Messages, id: @current_room._id, room: @current_room %>
+  </div>
 </div>
