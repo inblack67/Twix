@@ -17,9 +17,7 @@ defmodule TwixWeb.RoomController do
   end
 
   def create(conn, %{"room" => room_input}) do
-    room_with_user_id = Map.put(room_input, "user_id", conn.assigns.current_user.id)
-
-    case RoomRepo.create_room(room_with_user_id) do
+    case RoomRepo.create_room(conn.assigns.current_user, room_input) do
       {:ok, room} ->
         TwixWeb.Endpoint.broadcast(@chat_topic, @new_room, room)
 
