@@ -13,12 +13,8 @@ option {
 .chatbox {
   margin: 2rem 0 2rem 0;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  // max-height: 30rem;
-  // overflow: scroll;
+  overflow: auto;
+  max-height: 20rem;
   width: 100%;
   border: 1px solid grey;
   border-radius: 0.5rem;
