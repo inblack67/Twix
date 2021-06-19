@@ -4,18 +4,19 @@
     <%= form_for @changeset, Routes.registration_path(@conn, :create), [as:
     :registration], fn f -> %>
     <div class="input-field">
-      <%= label f, :email %> <%= text_input f, :email, type: "email", autofocus:
-      true, required: true, class: "validate" %> <%= error_tag f, :email %>
+      <%= label f, :email %>
+      <%= text_input f, :email, type: "email", autofocus: true, required: true, class: "validate" %>
+      <%= error_tag f, :email %>
     </div>
     <div class="input-field">
-      <%= label f, :username%> <%= text_input f, :username, required: true,
-      class: "validate", minlength: 2, maxlength: 30 %> <%= error_tag f,
-      :username %>
+      <%= label f, :username%>
+      <%= text_input f, :username, required: true, class: "validate", minlength: 2, maxlength: 30 %>
+      <%= error_tag f, :username %>
     </div>
     <div class="input-field">
       <%= label f, :password %> <%= password_input f, :password, required: true,
-      class: "validate",minlength: 8, maxlength: 100 %> <%= error_tag f,
-      :password %>
+      class: "validate", minlength: 8, maxlength: 100 %>
+      <%= error_tag f, :password %>
     </div>
     <div class="input-field">
       <%= label f, :password_confirmation %> <%= password_input f,

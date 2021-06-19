@@ -4,12 +4,14 @@
     <%= form_for @conn, Routes.auth_path(@conn, :create), [as: :credentials], fn
     f -> %>
     <div class="input-field">
-      <%= label f, :username%> <%= text_input f, :username, required: true,
-      autofocus: true, class: "validate" %> <%= error_tag f, :username %>
+      <%= label f, :username%>
+      <%= text_input f, :username, required: true, autofocus: true, class: "validate" %>
+      <%= error_tag f, :username %>
     </div>
     <div class="input-field">
-      <%= label f, :password %> <%= password_input f, :password, required:
-      true,autofocus: true, class: "validate" %> <%= error_tag f, :password %>
+      <%= label f, :password %>
+      <%= password_input f, :password, required: true, autofocus: true, class: "validate" %>
+      <%= error_tag f, :password %>
     </div>
     <div class="input-field"><%= submit "Sign In", class: "btn grey darken-2" %></div>
     <% end %>

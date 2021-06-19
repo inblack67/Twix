@@ -22,7 +22,14 @@ defmodule Twix.Repo.PostRepo do
         title: title
       )
 
-    Post.changeset(post_with_user, %{})
-    |> Repo.insert()
+    {:ok, post} =
+      Post.changeset(post_with_user, %{})
+      |> Repo.insert()
+
+    preloaded_post =
+      post
+      |> Repo.preload(:user)
+
+    {:ok, preloaded_post}
   end
 end
