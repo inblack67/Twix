@@ -7,20 +7,22 @@ defmodule Twix.Repo.PostRepo do
 
   def get_posts() do
     Repo.all(from(p in Post, order_by: [desc: p.inserted_at]))
+    |> Repo.preload(:user)
   end
 
-  def create_post(user_id, input) do
+  def create_post(user_id, %{"content" => content, "title" => title}) do
     user = UserRepo.get_user_by_id!(user_id)
-    IO.inspect(user)
-    input_with_uuid = Map.put(input, "_id", UUID.uuid4())
 
     post_with_user =
       user
-      |> Ecto.build_assoc(:user, input_with_uuid)
+      |> Ecto.build_assoc(
+        :posts,
+        _id: UUID.uuid4(),
+        content: content,
+        title: title
+      )
 
-    IO.inspect(post_with_user)
-
-    Post.changeset(%Post{}, post_with_user)
+    Post.changeset(post_with_user, %{})
     |> Repo.insert()
   end
 end
