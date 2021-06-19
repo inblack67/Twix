@@ -30,9 +30,7 @@ defmodule TwixWeb.FeedLive.Create do
 
   @impl true
   def handle_event("save", %{"post" => post_input}, socket) do
-    post_with_user = Map.put(post_input, "user_id", socket.assigns.current_user_id)
-
-    case PostRepo.create_post(post_with_user) do
+    case PostRepo.create_post(socket.assigns.current_user_id, post_input) do
       {:ok, post} ->
         TwixWeb.Endpoint.broadcast(@feed_topic, @new_post, post)
 

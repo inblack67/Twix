@@ -8,6 +8,7 @@ defmodule Twix.Chat.Message do
   schema "messages" do
     field :content, :string
     field :type, :string, default: "text"
+    field :_id, :string
 
     belongs_to :user, User
     belongs_to :room, Room
@@ -18,7 +19,7 @@ defmodule Twix.Chat.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:content, :type])
+    |> cast(attrs, [:content, :type, :_id])
     |> validate_required([:content])
     |> validate_length(:content, min: 1)
   end
