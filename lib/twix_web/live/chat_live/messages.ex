@@ -15,7 +15,7 @@ defmodule TwixWeb.ChatLive.Messages do
   @impl true
   def update(assigns, socket) do
     changeset = Message.changeset(%Message{}, %{})
-    messages = MessageRepo.get_messages()
+    messages = MessageRepo.get_messages(assigns.room)
 
     {:ok,
      assign(socket,

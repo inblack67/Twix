@@ -16,4 +16,19 @@
   </div>
   </div>
 
+<div class="chatbox">
+  <ul id="messages" class="chat-messages">
+    <%= for message <- @messages do %>
+      <li class="darken-4 chat-message" id="<%= message.id %>">
+        <p class="message-content">
+          <%= message.content %>
+        </p>
+        <p class="grey-text darken-4">
+          ~ <%= message.user.username %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+  </div>
+
 </div>

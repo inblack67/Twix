@@ -5,8 +5,16 @@ defmodule Twix.Repo.MessageRepo do
   alias Twix.Repo.UserRepo
   alias Twix.Chat.Message
 
-  def get_messages(limit \\ 20) do
-    Repo.all(from(m in Message, limit: ^limit))
+  def get_messages(room, limit \\ 20) do
+    Repo.all(
+      from(m in Message,
+        # join: user in assoc(m, :user),
+        where: m.room_id == ^room.id,
+        order_by: [desc: m.inserted_at],
+        limit: ^limit
+      )
+    )
+    |> Repo.preload(:user)
   end
 
   def create_message(%{"content" => content}, room, user_id) do
