@@ -20,5 +20,6 @@ defmodule Twix.Chat.Message do
     message
     |> cast(attrs, [:content, :type])
     |> validate_required([:content])
+    |> validate_length(:content, min: 1)
   end
 end

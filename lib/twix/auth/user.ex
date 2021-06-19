@@ -5,7 +5,7 @@ defmodule Twix.Auth.User do
   alias Twix.Auth.User
   alias Twix.Feed.Post
   alias Twix.Chat.Room
-  alias Twix.Chat.Messages
+  alias Twix.Chat.Message
 
   schema "users" do
     field(:_id, :string)
@@ -18,7 +18,7 @@ defmodule Twix.Auth.User do
 
     has_many(:posts, Post)
     has_many(:rooms, Room)
-    has_many(:messages, Messages)
+    has_many(:messages, Message)
 
     timestamps()
   end

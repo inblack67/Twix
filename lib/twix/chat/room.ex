@@ -3,7 +3,7 @@ defmodule Twix.Chat.Room do
   import Ecto.Changeset
 
   alias Twix.Auth.User
-  alias Twix.Chat.Messages
+  alias Twix.Chat.Message
 
   schema "rooms" do
     field :description, :string
@@ -11,7 +11,7 @@ defmodule Twix.Chat.Room do
     field :_id, :string
 
     belongs_to :user, User
-    has_many :messages, Messages
+    has_many :messages, Message
 
     timestamps()
   end
