@@ -1,5 +1,5 @@
 <div class="mt-4">
-  <p class="flow-text grey-text darken-2 center">Elixir Feed</p>
+  <p class="flow-text grey-text darken-2 center">Elixir Rooms</p>
   <div class="row" id="rooms" phx-update="prepend">
     <%= for room <- @rooms do %>
     <div class="col s12 m6 l4" id="<%= room._id %>">
@@ -9,7 +9,7 @@
           <p><%= room.description %></p>
         </div>
         <div class="card-action">
-          <a role="button" class="pointer">Join</a>
+        <%= link "Join", to: Routes.chat_room_path(@socket, :index, room.name) %>
         </div>
       </div>
     </div>

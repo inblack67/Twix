@@ -22,5 +22,7 @@ defmodule Twix.Chat.Room do
     |> validate_length(:name, min: 5, max: 30)
     |> validate_length(:description, min: 10, max: 300)
     |> unique_constraint(:name)
+    |> update_change(:name, &String.trim(&1))
+    |> update_change(:description, &String.trim(&1))
   end
 end

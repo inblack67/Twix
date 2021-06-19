@@ -31,7 +31,7 @@ defmodule TwixWeb.Router do
     live "/feed/create", FeedLive.Create, :create
 
     live "/chat/rooms", ChatLive, :index
-    live "/chat/room/:id", ChatLive.Room, :index
+    live "/chat/room/:name", ChatLive.Room, :index
   end
 
   # Other scopes may use custom stacks.
