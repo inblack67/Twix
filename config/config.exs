@@ -17,6 +17,7 @@ config :twix, TwixWeb.Endpoint,
   render_errors: [view: TwixWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Twix.PubSub,
   live_view: [signing_salt: "Jx1r5boC"]
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -25,6 +26,8 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :twix, Twix.Repo, ssl: true
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
