@@ -16,7 +16,7 @@ config :twix, TwixWeb.Endpoint,
   secret_key_base: "NSKPAmLsiHOHtun3ngj3JbYqD5BkX0ujd4Xo/FbHthjDt2yJqG6+uPRu3umcfiPD",
   render_errors: [view: TwixWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Twix.PubSub,
-  live_view: [signing_salt: "Jx1r5boC"]
+  live_view: [signing_salt: "Jx1r5boC"],
   force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Configures Elixir's Logger
