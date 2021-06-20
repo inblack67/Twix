@@ -3,10 +3,22 @@
     <div class="col s12">
       <div class="card my_card">
         <div class="card-content">
-          <span class="card-title">Elixir & Phoenix</span>
-          <p>
-            Damn powerful. Channels, Presence, Ecto, Genservers, LiveView etc.
-          </p>
+          <p class="card-title">Twix: An Elixir & Phoenix Creation</p>
+            <ul>
+              <li>Elixir</li>
+              <li>Phoenix</li>
+              <li>LiveView</li>
+              <li>Ecto</li>
+              <li>PostgreSQL</li>
+              <li>Materialize</li>
+            </ul>
+            <p>Full Stack Realtime Application with Authentication, Posts, Rooms and Chat</p>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/inblack67/Twix" class="btn grey darken-2 mt-2">
+              Github Repo
+            </a>
         </div>
         <div class="card-action"></div>
       </div>
