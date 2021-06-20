@@ -25,4 +25,13 @@ defmodule Twix.Repo.RoomRepo do
   def room_changeset() do
     Room.changeset(%Room{}, %{})
   end
+
+  def delete_room(room_id, user_id) do
+    from(r in Room,
+      where:
+        r.id == ^room_id and
+          r.user_id == ^user_id
+    )
+    |> Repo.delete_all()
+  end
 end
