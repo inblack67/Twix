@@ -2,6 +2,8 @@
 
 ### Realtime App With Elixir & Phoenix
 
+- [Deployed](https://dull-wretched-baldeagle.gigalixirapp.com)
+
 ### Tech Stack
 
 - Elixir
