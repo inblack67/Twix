@@ -32,4 +32,13 @@ defmodule Twix.Repo.PostRepo do
 
     {:ok, preloaded_post}
   end
+
+  def delete_post(post_id, user_id) do
+    from(p in Post,
+      where:
+        p.id == ^post_id and
+          p.user_id == ^user_id
+    )
+    |> Repo.delete_all()
+  end
 end
