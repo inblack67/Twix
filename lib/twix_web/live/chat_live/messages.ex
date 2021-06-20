@@ -53,4 +53,18 @@ defmodule TwixWeb.ChatLive.Messages do
         {:noreply, assign(socket, changeset: changeset)}
     end
   end
+
+  @impl true
+  def handle_event("delete", %{"id" => message_id}, socket) do
+    case MessageRepo.delete_message(message_id, socket.assigns.current_user_id) do
+      {1, nil} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "Message deleted")
+         |> push_redirect(to: Routes.chat_room_path(socket, :index, socket.assigns.room.name))}
+
+      {0, nil} ->
+        {:noreply, socket}
+    end
+  end
 end

@@ -41,4 +41,13 @@ defmodule Twix.Repo.MessageRepo do
 
     {:ok, loaded_message}
   end
+
+  def delete_message(message_id, user_id) do
+    from(m in Message,
+      where:
+        m.id == ^message_id and
+          m.user_id == ^user_id
+    )
+    |> Repo.delete_all()
+  end
 end

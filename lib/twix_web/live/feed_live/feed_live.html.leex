@@ -11,8 +11,8 @@
         <div class="card-action">
           <a role="button">By: <%= post.user.username %> </a>
           <%= if @current_user_id === post.user_id  do %>
-          <a class="right pointer" phx-click="delete" phx-value-id="<%= post.id %>">Delete</a>
-        <% end %>
+            <a class="right pointer" phx-click="delete" phx-value-id="<%= post.id %>" phx-disable-with="Deleting...">Delete</a>
+          <% end %>
         </div>
       </div>
     </div>

@@ -23,9 +23,15 @@
         <p class="message-content">
           <%= message.content %>
         </p>
-        <p class="grey-text darken-4">
+        <div class="chat-message">
+         <%= if @current_user_id === message.user_id  do %>
+          <button phx-click="delete" phx-value-id="<%= message.id %>" class="btn blue-grey darken-4 mr-1" phx-target="<%= @myself %>" phx-disable-with="Deleting...">Delete</button>
+         <% end %>
+
+          <p class="grey-text darken-4">
           ~ <%= message.user.username %>
-        </p>
+          </p>
+        </div>
       </li>
     <% end %>
   </ul>

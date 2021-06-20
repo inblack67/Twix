@@ -11,7 +11,7 @@
         <div class="card-action">
         <%= link "Join", to: Routes.chat_room_path(@socket, :index, room.name) %>
         <%= if @current_user_id === room.user_id  do %>
-          <a class="right pointer" phx-click="delete" phx-value-id="<%= room.id %>">Delete</a>
+          <a class="right pointer" phx-click="delete" phx-value-id="<%= room.id %>" phx-disable-with="Deleting...">Delete</a>
         <% end %>
         </div>
       </div>
